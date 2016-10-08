@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Scoreboard</title>
+	<link rel="stylesheet" href="styles.css" type="text/css" media="all" />
+	<script type="text/javascript" src="js/ss/ss.js"></script>
+	<script type="text/javascript" src="js/ss/ss_communication_ajax.js"></script>
+	<script type="text/javascript" src="js/ss/ss_utility_url.js"></script>
+	<script type="text/javascript" src="js/ss/ss_dom_css.js"></script>
+	<script type="text/javascript" src="js/security.js"></script>
+</head>
+<body>
+	<div id="teamname">
+		<h1><strong>Team:</strong> <?php echo $team->name() ." (Team ". $team->id() . ")"; ?></h1>
+	</div>
+
+	<div id="score">
+		<h1><strong>Your Score:</strong> <?php echo $team->points(); ?></h1>
+	</div>
+
+	<div id="timer" time="<?php echo $secs2end; ?>">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</div>
+
+	<?php if ($notification) { ?>
+		<div id="message" class="success">
+			<p><?php echo $notificationmsg; ?></p>
+		</div>
+	<?php } ?>
+
+	<?php if ($error) { ?>
+		<div id="message" class="error">
+			<p><?php echo $errormsg; ?></p>
+		</div>
+	<?php } ?>
+
+	<div id="question_selection">
+		<?php foreach ($board as $cat => $q) { ?>
+
+			<div class="cat">
+				<h2><?php echo $cat; ?></h2>
+				<ul>
+					<?php
+						echo "\n";
+						foreach ($q as $points => $status) {
+							$id = preg_replace("/\s/", "", strtolower($cat)) . "_" . $points;
+							if ($status == 'open' || $status == 'openstatic' || $status == 'lead' || $status == 'lead current') {
+								if ($game->isSelectLeadMode()) {
+									echo "\t\t\t\t\t<li class='$status' id='$id'><a href='#' onclick='return false;'>$points</a></li>\n";
+								} else {
+									echo "\t\t\t\t\t<li class='$status' id='$id'><a href='?cat=$cat&q=$points'>$points</a></li>\n";
+								}
+							} else if ($status == 'select_lead' && $game->isSelectLeadMode()){
+								echo "\t\t\t\t\t<li class='$status' id='$id'><a href='?newleadcat=$cat&newleadq=$points'>$points</a></li>\n";
+							} else {
+								echo "\t\t\t\t\t<li class='$status' id='$id'><a href='#' onclick='return false;'>$points</a></li>\n";
+							}
+						}
+					?>
+				</ul>
+			</div>
+		<?php } ?>
+
+
+		<div class="clear"></div>
+
+		<div id="legend">
+			<ul>
+				<li class="l_lead"><span>&nbsp;</span> = Lead Question</li>
+				<li class="l_open"><span>&nbsp;</span> = Open</li>
+				<li class="l_answered"><span>&nbsp;</span> = Answered</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+
+		<div id="hints" <?php if(count($hints) == 0 || $secs2end<=0) { ?>style="display: none" <?php } ?>>
+			<h3>Messages:</h3>
+			<div id="hintslist">
+			<?php
+				if ($secs2end>0) {
+					foreach ($hints as $hint) {
+						echo "<p><span class=\"timestamp\">${hint['timestamp']}</span>${hint['hint']}</p>\n";
+					}
+				}
+			?>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+
+	<div id="sidebar">
+
+		<?php if ($secs2end>0) { ?>
+			<div id="current_question">
+				<?php
+					if (empty($category) && empty($question)) {
+						echo "<p>$msg</p>\n";
+					} else {
+						echo "<h3>$category $question:</h3><p>". $conf['qa'][$category][$question]['q'] . '</p>';
+				?>
+						<form action="" method="post" id="answerform">
+							<p><label for="answer">Your Answer:</label><textarea rows="1" name="answer" id="answer"></textarea><input type="submit" name="submit" value="Submit" id="submit" /><input type="hidden" id="h_cat" name="category" value="<?php echo $category; ?>"><input type="hidden" id="h_q" name="question" value="<?php echo $question; ?>"></p>
+						</form>
+				<?php } ?>
+			</div>
+		<?php } ?>
+
+		<div id="leaderboard">
+			<h2>Leaderboard</h2>
+			<ol id="leaderboard_list">
+				<?php
+				foreach($leaderboard as $pos => $teaminfo) {
+					if ($teaminfo['teamid'] == $_SESSION['teamid']) {
+						echo "<li class='you'>" . $teaminfo['team'] . " <span class='score'>(" . $teaminfo['points'] . ")</span></li>";
+					} else {
+						echo "<li>" . $teaminfo['team'] . " <span class='score'>(" . $teaminfo['points'] . ")</span></li>";
+					}
+				}
+				?>
+			</ol>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		new PixelsCampSecurityContest();
+		document.getElementById('answer').addEventListener('keypress', function(event) {
+
+		   if(event.keyCode === 13) {
+		      document.getElementById('submit').click();
+		      event.preventDefault();
+		   }
+		});
+
+	</script>
+</body>
+</html>

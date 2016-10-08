@@ -1,0 +1,16 @@
+{
+  "name": "ctfwsserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Claudio Gamboa <gamboa@brpx.com>",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.11.1",
+    "pm2": "^2.0.18",
+    "ws": "^1.1.1"
+  }
+}

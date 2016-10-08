@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Scoreboard</title>
+	<link rel="stylesheet" href="styles.css" type="text/css" media="all" />
+	<script type="text/javascript" src="js/ss/ss.js"></script>
+	<script type="text/javascript" src="js/ss/ss_communication_ajax.js"></script>
+	<script type="text/javascript" src="js/ss/ss_utility_url.js"></script>
+	<script type="text/javascript" src="js/ss/ss_dom_css.js"></script>
+	<script type="text/javascript" src="js/security_dashboard.js"></script>
+</head>
+<body id="dashboard">
+	<div id="score">
+		<h1><strong>Security Contest Scoreboard</strong></h1>
+	</div>
+	
+	<div id="timer" time="<?php echo $secs2end; ?>">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</div>
+	
+	<div id="question_selection">
+		
+		<?php foreach ($board as $cat => $q) { ?>
+			
+			<div class="cat">
+				<h2><?php echo $cat; ?></h2>
+				<ul>
+					<?php
+						echo "\n";
+						foreach ($q as $points => $status) { 
+							$id = preg_replace("/\s/", "", strtolower($cat)) . "_" . $points;
+							if ($status['class'] == 'open') {
+								echo "\t\t\t\t\t<li class='".$status['class']."' id='$id'><p>$points</p><h3>Teams Completed:</h3><ul>";
+								foreach ($status['teams'] as $k=>$teamid) {
+									echo "<li class='team1'>$teamid</li>";
+								}
+								echo "</ul></li>\n";
+							} else if ($status['class'] == 'lead') {
+								echo "\t\t\t\t\t<li class='".$status['class']."' id='$id'><p>$points</p><h3><strong>Lead Question</strong></h3></li>\n";
+							} else {
+								echo "\t\t\t\t\t<li class='".$status['class']."' id='$id'><p>$points</p></li>\n";
+							}
+						}
+					?>
+				</ul>
+			</div>
+		<?php } ?>
+		<div id="legend">
+			<ul>
+				<li class="l_lead"><span>&nbsp;</span> = Lead Question</li>
+				<li class="l_open"><span>&nbsp;</span> = Open</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+		
+	</div>
+	
+	<div id="sidebar">
+
+		<div id="leaderboard">
+			<h2>Leaderboard</h2>
+			<ol id="leaderboard_list">
+				<?php 
+				foreach($leaderboard as $pos => $teaminfo) {
+					if (isset($teaminfo['teamid']['me'])) {
+						echo "<li class='you'>" . $teaminfo['team'] . " <span class='score'>(" . $teaminfo['points'] . ")</span></li>";
+					} else {
+						echo "<li>" . $teaminfo['team'] . " <span class='score'>(" . $teaminfo['points'] . ")</span></li>";	
+					}
+				}
+				?>
+			</ol>
+		</div>
+	</div>
+	
+	<div id="info">
+		<em>Updated every 5 seconds</em>
+	</div>
+	
+	<script type="text/javascript">
+		new PixelsCampSecurityContestDashboard();
+	</script>
+</body>
+</html>

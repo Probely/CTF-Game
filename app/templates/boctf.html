@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Scoreboard</title>
+	<link rel="stylesheet" href="styles.css" type="text/css" media="all" />
+	<script type="text/javascript" src="js/ss/ss.js"></script>
+	<script type="text/javascript" src="js/ss/ss_communication_ajax.js"></script>
+	<script type="text/javascript" src="js/ss/ss_utility_url.js"></script>
+	<script type="text/javascript" src="js/ss/ss_dom_css.js"></script>
+	<script type="text/javascript" src="js/ss/ss_utility_serialize.js"></script>
+	<script type="text/javascript" src="js/security_dashboard.js"></script>
+	<script type="text/javascript" src="js/sendmsg.js"></script>
+</head>
+<body id="dashboard">
+	<div id="score">
+		<h1><strong>Security Contest BO</strong></h1>
+	</div>
+
+	<div id="timer" time="<?php echo $secs2end; ?>">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</div>
+
+	<div id="actions">
+		<form action="" method="POST" onsubmit="return confirm('Do you really want to change the *GAME TIME*?');">
+		<p><input type="submit" name="start" value="Start game" id="submit" /></p>
+		<p><input type="submit" name="end" value="End game" id="submit" /></p>
+		</form>
+		<form action="" method="POST" onsubmit="return confirm('Do you really want to change the *GAME TIME*?');">
+		<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+		<p><input type="number" name="text" value="" id="text" class="big" /></p>
+		<p><input type="submit" name="pause" value="Pause minutes" id="submit" /></p>
+		</form>
+		<div class="clear"></div>
+	</div>
+	<div id="actions">
+        <form action="" method="POST">
+        <p><input type="text" name="text" value="" id="text" class="big" /></p>
+        <p><input type="submit" name="addhint" value="Add Hint" id="submit" /></p>
+		</form>
+		<div class="clear"></div>
+	</div><div class="clear"></div>
+
+
+	<div id="answers" class="box">
+		<table border="0" cellspacing="5" cellpadding="5">
+			<tr><th>Category</th><th>Question</th><th>Points</th><th>TeamID</th><th>Answer TS</th></tr>
+
+			<?php
+			foreach ($db->listAllAnswers() as $k => $answer) {
+				echo "<tr><td>".$answer['cat']."</td><td>".$answer['question']."</td><td>". $answer['points'] . "</td><td>" . $answer['teamid'] . "</td><td>" . $answer['answeredts'] . "</td></tr>";
+			}
+			?>
+
+		</table>
+	</div>
+
+	<div id="answers2" class="box">
+		<table border="0" cellspacing="5" cellpadding="5">
+			<tr><th>Category</th><th>Question</th><th>TeamID</th><th>Answer TS</th></tr>
+
+			<?php
+			foreach ($game->closedQuestions() as $k => $answer) {
+				echo "<tr><td>".$answer['cat']."</td><td>".$answer['question']. "</td><td>" . $answer['teamid'] . "</td><td>" . $answer['answeredts'] . "</td></tr>";
+			}
+			?>
+
+		</table>
+	</div>
+
+	<script type="text/javascript">
+		new PixelsCampSecurityContestDashboard();
+	</script>
+</body>
+</html>

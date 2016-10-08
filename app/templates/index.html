@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Scoreboard</title>
+	<link rel="stylesheet" href="styles.css" type="text/css" media="all" />
+</head>
+<body>
+	<?php if ($failedlogin) { ?>
+		<div id="message" class="error">
+			<p>Invalid Login!</p>
+		</div>
+	<?php } ?>
+		<div id="login">			
+			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+							
+				<p><label for="key">Login:</label><input type="text" name="login" value="" id="key" /><input type="submit" name="submit" value="Submit" id="submitkey" /></p>
+			
+			</form>
+		</div>
+
+</body>
+</html>

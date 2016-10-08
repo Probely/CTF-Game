@@ -1,0 +1,698 @@
+/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
+-------------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	background: transparent;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+body {
+	line-height: 1;
+}
+h1, h2, h3, h4, h5, h6 {
+	clear: both;
+	font-weight: normal;
+}
+
+blockquote {
+	quotes: none;
+}
+blockquote:before, blockquote:after {
+	content: '';
+	content: none;
+}
+del {
+	text-decoration: line-through;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a img {
+	border: none;
+}
+
+#current_question pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+/* =Layout
+-------------------------------------------------------------- */
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	color:#fff;
+	background: #222;
+	margin:20px;
+	padding:0;
+	font-family:Helvetica,Arial,sans-serif;
+	font-size: 14px; font-size: 1.4rem;
+}
+
+strong {
+	font-weight:bold;
+}
+
+.clear {
+	clear:both;
+	height:1%;
+}
+
+#score {
+	text-align:center;
+	padding:0 0 20px;
+}
+
+#score h1 {
+	font-size:30px; font-size:3rem;
+}
+
+#teamname {
+	position:absolute;
+	top:15px;
+	left:20px;
+	padding:0 0 20px;
+}
+
+#teamname h1 {
+	font-size:16px; font-size:2rem;
+}
+
+#question_selection {
+	float:left;
+	width:50%;
+	padding:10px 0 10px 10px;
+	background:#444;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+}
+
+#dashboard #question_selection {
+	width:75%;
+}
+
+.cat {
+	width:25%;
+	float:left;
+}
+
+#question_selection h2 {
+	font-size:18px; font-size:1.8rem;
+	margin-bottom:10px;
+	margin-right:10px;
+	min-height:40px;
+	background:#222;
+	border:2px solid #222;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+	padding:5px;
+	text-align:center;
+}
+
+#question_selection ul {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+#question_selection li {
+	text-align:center;
+	margin-right:10px;
+}
+
+#dashboard #question_selection li {
+	background:#666;
+	height:70px;
+	text-decoration:none;
+	color:#999;
+	margin:0 10px 10px 0;
+	padding: 10px 0;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+}
+
+#dashboard #question_selection li ul {
+	margin:10px;
+	text-align:center;
+}
+
+#dashboard #question_selection li li {
+	margin:0 1px 0 0;
+	font-size:12px;font-size:1.2rem;
+	width:auto;
+	display:inline;
+	min-height:1px;
+	padding:2px 4px;
+	line-height:20px;
+	background:#fff;
+	color:#222;
+}
+
+#dashboard #question_selection h3 {
+	font-size:12px;font-size:1.2rem;
+}
+
+#question_selection li a {
+	display:block;
+	border:2px solid #444;
+	float:left;
+	width:100%;
+	background:#666;
+	text-decoration:none;
+	color:#000;
+	margin:0 0 10px;
+	padding: 20px 0;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+}
+
+
+#question_selection li a:hover {
+	cursor: default;
+}
+
+#question_selection li.select_lead a {
+	font-weight:bold;
+	color:#fff;
+	border:2px solid #fff;
+}
+
+#question_selection li.select_lead a:hover {
+	background:#D1BF6F;
+	cursor:pointer;
+	cursor:hand;
+}
+
+#question_selection li.openstatic a {
+	background:#2853B9;
+	font-weight:bold;
+	color:#fff;
+}
+
+#question_selection li.open a,
+#dashboard #question_selection li.open {
+	background:#2853B9;
+	font-weight:bold;
+	color:#fff;
+}
+
+#question_selection li.open a:hover {
+	background:#2E61D6;
+	cursor:pointer;
+	cursor:hand;
+	border:2px solid #fff;
+}
+
+#question_selection li.answered a,
+#dashboard #question_selection li.answered {
+	background:#599359;
+	font-weight:bold;
+	color:#fff;
+}
+
+#question_selection li.answered a:after,
+#dashboard #question_selection li.answered p:after,
+#dashboard #question_selection li.open p:after {
+	content: " \2714";
+}
+
+#question_selection li.answered a:hover {
+	cursor:default;
+}
+
+#question_selection li.current a {
+	background:#2E61D6;
+	font-weight:bold;
+	color:#fff;
+	border:2px solid #fff;
+}
+
+#question_selection li.current a:before {
+	content: "\270E\00a0";
+}
+
+#question_selection li.current a:hover {
+	cursor:pointer;
+	cursor:hand;
+}
+
+#question_selection li.lead a,
+#dashboard #question_selection li.lead {
+	background:#AD9D5A;
+	font-weight:bold;
+	color:#fff;
+}
+
+#question_selection li.lead a:hover {
+	background:#D1BF6F;
+	cursor:pointer;
+	cursor:hand;
+	border:2px solid #fff;
+}
+
+#sidebar {
+	float:right;
+	width:45%;
+}
+
+#sidebar a {
+    text-decoration: underline;
+    cursor:pointer;
+    cursor:hand;
+    font-weight:bold;
+	color:#fc0;
+}
+
+#sidebar a:hover,
+#sidebar a:focus {
+    color:yellow;
+}
+
+#dashboard #sidebar {
+	width:23%;
+}
+
+#current_question, #hints {
+	background:#444;
+	padding:10px;
+	line-height:1.3;
+	margin-bottom:20px;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+}
+
+#hints {
+	margin-top: 20px;
+}
+
+#hints h3 {
+	margin-bottom: 0.5em;
+}
+
+#hintslist {
+	max-height: 250px;
+	overflow: auto;
+}
+
+#hintslist p {
+	background:#222;
+	padding:10px;
+	line-height:1.3;
+	margin-bottom:10px;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+
+}
+
+#hintslist span {
+	padding-right: 0.5em;
+	font-weight: bold;
+}
+
+#hintslist p:first-child {
+	background:#73B973;
+	color:#222;
+}
+
+#actions {
+	background:#444;
+	padding:5px;
+	line-height:1.3;
+	margin-bottom:15px;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+}
+
+#actions p {
+    padding: 2px;
+    float:left;
+}
+
+.box {
+    float:left;
+    width:48%;
+    margin-right:4%;
+    background:#444;
+	line-height:1.3;
+	margin-bottom:20px;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+}
+
+.box:nth-child(2n+1) {
+    margin-right:0;
+}
+
+table {
+    width:100%;
+    font-size:.9em;
+}
+
+td {
+    padding:1px 5px 0;
+}
+
+th {
+    text-align:left;
+    padding:1px 5px 0;
+}
+
+#current_question p {
+	margin-bottom:10px;
+}
+
+#current_question label {
+	display:block;
+	font-weight:bold;
+}
+
+#login {
+	background:#444;
+	padding:10px;
+	line-height:1.2;
+	margin:0 auto;
+	width:40%%;
+	text-align:center;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+}
+
+#login p {
+	margin-bottom:10px;
+}
+
+#login label {
+	display:block;
+	font-weight:bold;
+}
+
+input#key {
+	width:40%%;
+	padding:5px;
+}
+
+input#submitkey {
+	background:#73B973;
+	margin:5px;
+	border:none;
+	padding:10px;
+	font-size:15px;font-size:1.5rem;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+}
+
+input#answer,
+textarea {
+	width:50%;
+	padding:10px;
+	font-size: 1.5rem;
+	float: left;
+	margin-right: 0.5em;
+}
+
+input#text {
+	width:80%;
+	padding:2px;
+}
+
+input.big {
+	padding:8px !important;
+	font-size:15px !important;
+	font-size:1.5rem !important;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px !important; /* Standard. IE9 */
+}
+
+input#submit {
+	background:#51B84A;
+	margin:0;
+	border:none;
+	padding:10px;
+	font-size:15px;font-size:1.5rem;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+}
+
+input#submit:hover {
+	cursor:pointer;
+	cursor:hand;
+}
+
+#leaderboard {
+	background:#444;
+	padding:10px;
+	line-height:1.2;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+}
+
+#leaderboard h2 {
+	margin:0;
+}
+
+#leaderboard ol {
+	margin-top:0;
+}
+
+#leaderboard li {
+	border-bottom:1px solid #666;
+	padding:5px 0;
+	position:relative;
+	padding-right:50px;
+}
+
+#leaderboard .score {
+	color:#ccc;
+	position:absolute;
+	right:0;
+	top:5px;
+}
+
+
+#leaderboard .you,
+#leaderboard .you .score {
+	color:#FFE449;
+	font-weight:bold;
+}
+
+#timer {
+	position:absolute;
+	top:15px;
+	right:20px;
+	background:#444;
+	padding:10px;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+	font-size:20px;font-size:2rem;
+	font-family:"Courier New", sans-serif;
+	color:#FFE449;
+	font-weight:bold;
+}
+
+#message {
+	text-align:center;
+	padding:10px;
+	margin-bottom:15px;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+
+}
+
+#message_info {
+	text-align:center;
+	padding:10px;
+	margin-bottom:15px;
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	-khtml-border-radius: 5px; /* Konqueror */
+	border-radius: 5px; /* Standard. IE9 */
+
+}
+
+.error {
+	color:#fff;
+	background:#C5352B;
+	font-weight:bold;
+}
+
+.success {
+	background:#51B84A;
+	color:#222;
+}
+
+.success span {
+	font-weight:bold;
+}
+
+#info {
+    clear:both;
+    padding:10px;
+    color:#ccc;
+    font-size:.8em;
+}
+
+#legend {
+    color:#ccc;
+    font-size:.8em;
+}
+
+#legend li {
+    float:left;
+    padding-right:10px;
+}
+
+#legend li span {
+    background:#fff;
+    width:10px;
+    height:10px;
+    margin-right:4px;
+    display:block;
+    -moz-border-radius: 2px; /* FF1+ */
+	-webkit-border-radius: 2px; /* Saf3+, Chrome */
+	-khtml-border-radius: 2px; /* Konqueror */
+	border-radius: 2px; /* Standard. IE9 */
+    float:left;
+}
+
+
+#dashboard #legend ul {
+    padding:0;
+}
+
+#dashboard #question_selection #legend li {
+    margin:0;
+    height:auto;
+    list-style:none;
+    background:transparent;
+    margin-right:4px;
+    color:#ccc;
+    padding:0 10px 0 0;
+}
+
+#legend li.l_lead span {
+    background:#D1BF6F;
+}
+
+#legend li.l_open span {
+    background:#2853B9;
+}
+
+#legend li.l_answered span {
+    background:#51B84A;
+}
+
+
+
+
+
+
+@import 'https://fonts.googleapis.com/css?family=Lato';
+
+
+body{
+	background: #01A7EE;
+	font-family: 'Lato', sans-serif;
+}
+
+h1{
+	color: #fff;
+}
+
+#question_selection{
+	border-radius: 0;
+	background: transparent;
+}
+
+#leaderboard{
+	border-radius: 0;
+	background: transparent;
+}
+
+#info{
+	color: #fff;
+}
+
+#timer{
+	background: transparent;
+	font-size: 3rem;
+	color: #ffe400;
+}
+
+#leaderboard ol {
+    padding: 15px 0 15px 15px;
+	}
+
+#current_question{
+	border-radius: 0;
+}
+
+#dashboard #question_selection #legend li{
+	color: #fff;
+}
+
+#question_selection li.lead a, #dashboard #question_selection li.lead,  #legend li.l_lead span{
+	background: #fc0;
+	color: #000;
+}
+
+#current_question{
+	background: #ffe168;
+	color: #fff;
+}
+
+#current_question a{
+	color: #D1BF6F;
+
+}
+
+#current_question, #hints {
+    background: rgba(0, 0, 0, 0.18);
+	}
