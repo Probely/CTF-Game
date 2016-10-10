@@ -8,11 +8,11 @@ This is the repo for the Pixels Camp Security CTF Dashboard, which includes
 
 Public dashboard:
 ![Public dashboard]
-(https://github.com/Probely/CTF-Game/screenshots/public+dashboard.png)
+(https://github.com/Probely/CTF-Game/screenshots/public dashboard.png)
 
 Private team area:
 ![Private team area]
-(https://github.com/Probely/CTF-Game/screenshots/team+dashboard.png)
+(https://github.com/Probely/CTF-Game/screenshots/team dashboard.png)
 
 Organization backoffice:
 ![Organization backoffice]
