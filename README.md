@@ -7,16 +7,13 @@ This is the repo for the Pixels Camp Security CTF Dashboard, which includes
 * a backoffice for the organization
 
 Public dashboard:
-![Public dashboard]
-(https://github.com/Probely/CTF-Game/blob/master/screenshots/public dashboard.png)
+![Public dashboard](https://github.com/Probely/CTF-Game/blob/master/screenshots/public%20dashboard.png)
 
 Private team area:
-![Private team area]
-(https://github.com/Probely/CTF-Game/blob/master/screenshots/team dashboard.png)
+![Private team area](https://github.com/Probely/CTF-Game/blob/master/screenshots/team%20dashboard.png)
 
 Organization backoffice:
-![Organization backoffice]
-(https://github.com/Probely/CTF-Game/blob/master/screenshots/backoffice.png)
+![Organization backoffice](https://github.com/Probely/CTF-Game/blob/master/screenshots/backoffice.png)
 
 Main features of the dashboard
 
